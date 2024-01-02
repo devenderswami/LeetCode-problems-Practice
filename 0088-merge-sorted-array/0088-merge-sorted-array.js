@@ -7,10 +7,35 @@
  */
 var merge = function(nums1, m, nums2, n) {
     
-    for(let i = 0 ; i< n; i++ ){
-        nums1[i+m] = nums2[i]
-           
+    let i = m - 1
+    let j = n -  1
+    let k = m + n -1 
+
+    while(i>=0 && j>=0){
+        if(nums1[i] < nums2[j]){
+          nums1[k] = nums2[j]
+          j--
+          k--
+        }else{
+          nums1[k] = nums1[i]
+          i--
+          k--
+
+        }
     }
 
-    nums1.sort((a,b)=>a-b)
+    while(j>=0){
+        nums1[k] = nums2[j]
+          j--
+          k--
+
+    }
+
+
+    while(i>=0){
+        nums1[k] = nums1[i]
+          i--
+          k--
+
+    }
 };
